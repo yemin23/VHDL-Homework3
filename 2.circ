@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project source="5.0.0" version="1.0">
+  This file is intended to be loaded by Logisim-evolution v5.0.0(https://github.com/logisim-evolution/).
+
+  <lib desc="#Wiring" name="0">
+    <tool name="Pin">
+      <a name="appearance" val="classic"/>
+    </tool>
+  </lib>
+  <lib desc="#Gates" name="1"/>
+  <lib desc="#Plexers" name="2"/>
+  <lib desc="#Arithmetic" name="3"/>
+  <lib desc="#FPArithmetic" name="4"/>
+  <lib desc="#Memory" name="5"/>
+  <lib desc="#I/O" name="6"/>
+  <lib desc="#TTL" name="7"/>
+  <lib desc="#TCL" name="8"/>
+  <lib desc="#Base" name="9"/>
+  <lib desc="#BFH-Praktika" name="10"/>
+  <lib desc="#Input/Output-Extra" name="11"/>
+  <lib desc="#Soc" name="12"/>
+  <main name="main"/>
+  <options>
+    <a name="gateUndefined" val="ignore"/>
+    <a name="simlimit" val="1000"/>
+    <a name="simrand" val="0"/>
+  </options>
+  <mappings>
+    <tool map="Button2" name="Poke Tool"/>
+    <tool map="Button3" name="Menu Tool"/>
+    <tool map="Ctrl Button1" name="Menu Tool"/>
+  </mappings>
+  <toolbar>
+    <tool name="Poke Tool"/>
+    <tool name="Edit Tool"/>
+    <tool name="Wiring Tool"/>
+    <tool name="Text Tool"/>
+    <tool name="Image"/>
+    <sep/>
+    <tool name="Pin"/>
+    <tool name="Pin">
+      <a name="facing" val="west"/>
+      <a name="type" val="output"/>
+    </tool>
+    <sep/>
+    <tool name="NOT Gate"/>
+    <tool name="AND Gate"/>
+    <tool name="OR Gate"/>
+    <tool name="XOR Gate"/>
+    <tool name="NAND Gate"/>
+    <tool name="NOR Gate"/>
+    <sep/>
+    <tool name="D Flip-Flop"/>
+    <tool name="Register"/>
+  </toolbar>
+  <circuit name="main">
+    <a name="appearance" val="logisim_evolution"/>
+    <a name="circuit" val="main"/>
+    <a name="circuitnamedboxfixedsize" val="true"/>
+    <a name="simulationFrequency" val="1.0"/>
+    <comp lib="0" loc="(170,410)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="label" val="en2"/>
+    </comp>
+    <comp lib="0" loc="(170,430)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="label" val="D2"/>
+    </comp>
+    <comp lib="0" loc="(440,410)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="facing" val="west"/>
+      <a name="label" val="Q2"/>
+      <a name="type" val="output"/>
+    </comp>
+    <comp lib="0" loc="(440,430)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="facing" val="west"/>
+      <a name="label" val="Q2_not"/>
+      <a name="type" val="output"/>
+    </comp>
+    <comp lib="0" loc="(470,200)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="facing" val="west"/>
+      <a name="label" val="Q"/>
+      <a name="type" val="output"/>
+    </comp>
+    <comp lib="0" loc="(470,290)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="facing" val="west"/>
+      <a name="label" val="Q_not"/>
+      <a name="type" val="output"/>
+    </comp>
+    <comp lib="0" loc="(80,160)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="label" val="D"/>
+    </comp>
+    <comp lib="0" loc="(80,200)" name="Pin">
+      <a name="appearance" val="classic"/>
+      <a name="label" val="en"/>
+    </comp>
+    <comp lib="1" loc="(180,290)" name="NOT Gate"/>
+    <comp lib="1" loc="(260,180)" name="NAND Gate"/>
+    <comp lib="1" loc="(260,310)" name="NAND Gate"/>
+    <comp lib="1" loc="(400,200)" name="NAND Gate"/>
+    <comp lib="1" loc="(400,290)" name="NAND Gate"/>
+    <comp loc="(410,410)" name="d_latch"/>
+    <wire from="(110,160)" to="(110,290)"/>
+    <wire from="(110,160)" to="(200,160)"/>
+    <wire from="(110,290)" to="(150,290)"/>
+    <wire from="(130,200)" to="(130,330)"/>
+    <wire from="(130,200)" to="(200,200)"/>
+    <wire from="(130,330)" to="(200,330)"/>
+    <wire from="(170,410)" to="(190,410)"/>
+    <wire from="(170,430)" to="(190,430)"/>
+    <wire from="(180,290)" to="(200,290)"/>
+    <wire from="(260,180)" to="(340,180)"/>
+    <wire from="(260,310)" to="(340,310)"/>
+    <wire from="(300,220)" to="(300,240)"/>
+    <wire from="(300,220)" to="(340,220)"/>
+    <wire from="(300,240)" to="(410,240)"/>
+    <wire from="(300,260)" to="(300,270)"/>
+    <wire from="(300,260)" to="(420,260)"/>
+    <wire from="(300,270)" to="(340,270)"/>
+    <wire from="(400,200)" to="(420,200)"/>
+    <wire from="(400,290)" to="(410,290)"/>
+    <wire from="(410,240)" to="(410,290)"/>
+    <wire from="(410,290)" to="(470,290)"/>
+    <wire from="(410,410)" to="(440,410)"/>
+    <wire from="(410,430)" to="(440,430)"/>
+    <wire from="(420,200)" to="(420,260)"/>
+    <wire from="(420,200)" to="(470,200)"/>
+    <wire from="(80,160)" to="(110,160)"/>
+    <wire from="(80,200)" to="(130,200)"/>
+  </circuit>
+  <vhdl appearance="logisim_evolution" name="d_latch">LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+
+ENTITY d_latch IS
+    PORT (
+        en    : IN std_logic;
+        d     : IN std_logic;
+        q     : OUT std_logic;
+        q_not : OUT std_logic
+    );
+END d_latch;
+
+ARCHITECTURE behavior OF d_latch IS
+BEGIN
+    process(en, d)
+    begin
+        -- Enable이 1일 때만 D 값을 출력으로 전달 (Follow)
+        if (en = '1') then
+            q &lt;= d;
+            q_not &lt;= not d;
+        end if;
+        -- Enable이 0일 때는 아무 동작도 하지 않음 (자동으로 이전 값 Hold)
+    end process;
+END behavior;</vhdl>
+</project>
